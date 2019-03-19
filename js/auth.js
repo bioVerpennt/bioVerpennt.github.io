@@ -1,14 +1,87 @@
 async function login() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-  firebase.auth().signInWithEmailAndPassword(email, password).then((authObject) => {
-    alert("Login success!");
-  }).catch(function(error) {
-    alert("error");
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-    console.log(errorMessage);
+
+  // set persistence
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(function () {
+      firebase.auth().signInWithEmailAndPassword(email, password).then((authObject) => {
+        window.location.replace('blog.html');
+      }).catch(function (error) {
+        handleError(error.message);
+      });
+    })
+    .catch(function (error) {
+      handleError(error.message);
+    });
+}
+
+async function logout() {
+  firebase.auth().signOut().catch(function (error) {
+    // An error happened.
   });
 }
+
+async function register() {
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  var passwordAgain = document.getElementById('passwordAgain').value;
+  if(password != passwordAgain) {
+    handleError("Passwörter stimmen nicht überein!");
+    return;
+  }  
+  firebase.auth().createUserWithEmailAndPassword(email, password).then((obj) => {
+    
+    var db = firebase.firestore().collection('UserData');
+    db.doc(obj.user.uid).set({
+      name: name
+    }).catch(error => {
+      handleError(error.message);
+    });
+
+    Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+    }).fire({
+      type: 'success',
+      title: "Konto erstellt! Sobald Sophie Sie akzeptiert können Sie sich anmelden",
+    });
+  }).catch(function (error) {
+    handleError(error.message);
+  });
+}
+
+
+function handleError(msg) {
+  Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 1500,
+  }).fire({
+    type: 'error',
+    title: msg,
+  });
+}
+
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    localStorage.setItem('myPage.expectSignIn', '1');
+    // console.log(user);
+    if (location.pathname == "/" || location.pathname == "/index.html") {
+      window.location.replace('blog.html');
+    }
+  } else {
+    localStorage.removeItem('myPage.expectSignIn');
+    var path = location.pathname;
+    if (path !== "/" && path !== "/register.html") {
+      window.location.replace('/');
+    }
+    // Implement logic to trigger the login dialog here or redirect to sign-in page.
+    // e.g. showDialog()
+  }
+})

@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>It's me: Michael Keller</title>
+  <title>Login</title>
   <!-- Add Stylesheet -->
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <!-- Add icon library -->
@@ -12,78 +12,81 @@
 <!-- Icon library -->
 <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
 
+<!-- Prettier alert library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-<script src="js/firebase.js"></script>
+<script src="js/firebaseInit.js"></script>
 <script src="js/auth.js"></script>
 
 
 
 <html>
 
-<body>
+  <body>
 
-  <div class="flex-container">
-
-    <div id="wrapper">
-
-      <div class="content">
-        <header>
-          <nav>
-          </nav>
-        </header>
-
-
-        <section>
-          <div class="card cardPadding centerText">
-
-            <div class="cardContent">
-                <ion-icon name="contact" style="font-size: 5em; color: #272b30"></ion-icon>
-
-              <br>
-              <input type="text" placeholder="Enter Email" id="email">
-              <br>
-              <input type="password" placeholder="Enter Password" id="password">
-              <br>
-              <button onclick="login()"><p>Login</p></button>
-              <br>
-              <br>
-
+    <div class="flex-container background">
+  
+      <div id="wrapper">
+  
+        <div class="content">
+          <header>
+            <nav>
+            </nav>
+          </header>
+  
+  
+          <section>
+            <div class="card cardPadding centerText">
+  
+              <div class="cardContent">
+                  <ion-icon name="paper" style="font-size: 5em; color: #272b30"></ion-icon>
+  
+                  <h1 style="color: #272b30">Sophie's Blog</h1>
+                  <br>
+                  <br>
+                  <input type="text" placeholder="Email" id="email">
+                  <br>
+                  <input type="password" placeholder="Passwort" id="password">
+                  <br>
+                  <button class="bigButton" onclick="login()">Login</button>
+                  <br>
+                  <br>
+                  <a href="register.html">Kein Konto? Registrieren</a>
+                  <br>
+                  <br>
+  
+              </div>
+  
             </div>
-
-          </div>
-
-
-        </section>
-
+  
+  
+          </section>
+  
+        </div>
       </div>
-
-      <div class="background">
-        <div id="particles-js" class="backgroundJS"></div>
-      </div>
+  
+  
+  
+  
+  
+      <footer class="centerText">
+        <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
+        <script>
+          document.getElementById('copyright').innerHTML = "© Copyright " + new Date().getFullYear() + " by Sophie Krenböck";
+        </script>
+        <table class="socials">
+          <tr>
+            <td class="icons"><a href="https://www.instagram.com/sophieelena_/" class="fa fa-instagram iconsLink"></a></td>
+          </tr>
+        </table>
+      </footer>
+  
+  
     </div>
-
-
-
-
-
-    <footer class="centerText">
-      <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
-      <script>
-        document.getElementById('copyright').innerHTML = "© Copyright " + new Date().getFullYear() + " by Sophie Krenböck";
-      </script>
-      <table class="socials">
-        <tr>
-          <td class="icons"><a href="https://www.github.com/michaelkeller3000" class="fa fa-github iconsLink"></a></td>
-          <td class="icons"><a href="https://twitter.com/SenKeller" class="fa fa-twitter iconsLink"></a></td>
-        </tr>
-      </table>
-    </footer>
-
-
-  </div>
-
-
-</body>
+  
+  
+  </body>
 
 </html>
