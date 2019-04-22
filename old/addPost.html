@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <!-- Add Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Image gallery Styles -->
+  <link rel="stylesheet" href="js/imageGallery/photoswipe.css"> 
+  <link rel="stylesheet" href="js/imageGallery/default-skin/default-skin.css"> 
+</head>
+
+<!-- Icon library -->
+<script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+
+<!-- Prettier alert library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="js/alert.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+<script src="js/firebaseInit.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/addPost.js"></script>
+
+<!-- Image gallery Javascript-->
+<script src="js/imageGallery/photoswipe.js"></script> 
+<script src="js/imageGallery/photoswipe-ui-default.js"></script>
+
+
+
+<html>
+
+<body>
+
+  <div class="flex-container background">
+
+    <div id="wrapper">
+
+      <div class="content">
+        <header>
+          <nav>
+            <ul>
+              <li>
+                <a style="padding: 0.5em; font-size: 1em" href="/blog.html">
+                  <ion-icon name="paper" style="font-size: 5em; color: #272b30"></ion-icon>
+                  <h1 style="color: #272b30">Sophie's Blog</h1>
+                </a>
+              </li>
+              <li>
+                <div style="display: flex; justify-content: center;">
+                  <a style="padding: 0.5em; font-size: 1em">
+                    <ion-icon onclick="logout()" class="iconNeg" name="log-out"></ion-icon>
+                  </a>
+                  <a style="padding: 0.5em; font-size: 1em" href="/admin.html">
+                    <ion-icon class="iconCaution" name="construct"></ion-icon>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <br>
+        <br>
+
+
+
+        <section>
+          <div class="card cardPadding centerText">
+
+            <div class="cardContent">
+
+                <p style="font-size: 1em">Hier kannst du mehrere Bilder heraufladen und danach in deinem Artikel plazieren</p>
+              <br>
+              <div id="galleryButtons"></div>
+
+              <br>
+              <label style="cursor: pointer;" for="file-upload" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i> Bilder Auswählen
+              </label>
+              <input style="display: none" id="file-upload" type="file" onchange="renderUploadButton(event)" multiple/>
+              <br>
+
+
+              <div id="gallerySmall" class="gallerySmall">
+              </div>
+              <br>
+              <button style="display: none" id="uploadImgs" class="bigButton" onclick="uploadImgs()">Bilder Hochladen</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section>
+          <div class="card cardPadding centerText">
+
+            <div class="cardContent">
+
+              <input type="text" placeholder="Titel" id="title">
+              <br>
+              <input type="text" placeholder="Kurzbeschrieb" id="subject">
+              <br>
+              <textarea id="post" placeholder="Blog Text" rows="8" cols="50"></textarea>
+              <br>
+              <button class="bigButton" onclick="post()">Posten</button>
+              
+              <br>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <div id="background" class="background">
+        </div>
+
+        <div id="gallery" style="display: none; height: 0!important" class="gallery">
+
+
+            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+              <!-- Background of PhotoSwipe. 
+                It's a separate element as animating opacity is faster than rgba(). -->
+              <div class="pswp__bg"></div>
+        
+              <!-- Slides wrapper with overflow:hidden. -->
+              <div class="pswp__scroll-wrap">
+        
+                <!-- Container that holds slides. 
+                    PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                    Don't modify these 3 pswp__item elements, data is added later on. -->
+                <div class="pswp__container">
+                  <div class="pswp__item"></div>
+                  <div class="pswp__item"></div>
+                  <div class="pswp__item"></div>
+                </div>
+        
+                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                <div class="pswp__ui pswp__ui--hidden">
+        
+                  <div class="pswp__top-bar">
+        
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+        
+                    <div class="pswp__counter"></div>
+        
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+        
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        
+                    <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                      <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                          <div class="pswp__preloader__donut"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                  </div>
+        
+                  <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                  </button>
+        
+                  <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                  </button>
+        
+                  <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                  </div>
+        
+                </div>
+        
+              </div>
+        
+            </div>
+        
+        
+          </div>
+        </div>
+
+      </div>
+      
+
+
+
+
+
+    <footer class="centerText">
+      <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
+      <script>
+        document.getElementById('copyright').innerHTML = "© Copyright " + new Date().getFullYear() + " by Sophie Krenböck";
+      </script>
+      <table class="socials">
+        <tr>
+          <td class="icons"><a href="https://www.instagram.com/sophieelena_/" class="fa fa-instagram iconsLink"></a>
+          </td>
+        </tr>
+      </table>
+    </footer>
+
+
+  </div>
+
+
+</body>
+
+</html>

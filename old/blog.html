@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <!-- Add Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!-- Icon library -->
+<script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+
+<!-- Prettier alert library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="js/alert.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+<script src="js/firebaseInit.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/blog.js"></script>
+
+
+
+<html>
+
+  <body>
+
+    <div class="flex-container background">
+  
+      <div id="wrapper">
+  
+        <div class="content">
+          <header>
+            <nav>
+              <ul>
+                <li>
+                  <a style="padding: 0.5em; font-size: 1em" href="/blog.html">
+                    <ion-icon name="paper" style="font-size: 5em; color: #272b30"></ion-icon>
+                    <h1 style="color: #272b30">Sophie's Blog</h1>
+                  </a>
+                </li>
+                <li>
+                  <div style="display: flex; justify-content: center;">
+                    <a style="padding: 0.5em; font-size: 1em"><ion-icon onclick="logout()" class="iconNeg" name="log-out"></ion-icon></a>
+                    <a style="padding: 0.5em; font-size: 1em" href="/admin.html"><ion-icon class="iconCaution" name="construct"></ion-icon></a>
+                    <a style="padding: 0.5em; font-size: 1em" href="/addPost.html"><ion-icon class="iconPos" name="add"></ion-icon></a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </header>
+
+          <br>
+          <br>
+  
+  
+          <section>
+            <ul style="list-style: none">
+              <li class="responsive">
+                  <div class="card cardPadding centerText">
+  
+                      <div class="cardContent">
+                          <ion-icon name="contact" style="font-size: 5em; color: #272b30"></ion-icon>
+          
+                          <br>
+                          <input type="text" placeholder="Email" id="email">
+                          <br>
+                          <input type="password" placeholder="Passwort" id="password">
+                          <br>
+                          <button class="bigButton" onclick="login()">Login</button>
+                          <br>
+                          <br>
+                          <a href="register.html">Kein Konto? Registrieren</a>
+                          <br>
+                          <br>
+          
+                      </div>
+          
+                    </div>
+              </li>
+              <li class="responsive">
+                  <div class="card cardPadding centerText">
+  
+                      <div class="cardContent">
+                          <ion-icon name="contact" style="font-size: 5em; color: #272b30"></ion-icon>
+          
+                          <br>
+                          <input type="text" placeholder="Email" id="email">
+                          <br>
+                          <input type="password" placeholder="Passwort" id="password">
+                          <br>
+                          <button class="bigButton" onclick="login()">Login</button>
+                          <br>
+                          <br>
+                          <a href="register.html">Kein Konto? Registrieren</a>
+                          <br>
+                          <br>
+          
+                      </div>
+          
+                    </div>
+              </li>
+              <li class="responsive">
+                  <div class="card cardPadding centerText" class="responsive">
+  
+                      <div class="cardContent">
+                          <ion-icon name="contact" style="font-size: 5em; color: #272b30"></ion-icon>
+          
+                          <br>
+                          <input type="text" placeholder="Email" id="email">
+                          <br>
+                          <input type="password" placeholder="Passwort" id="password">
+                          <br>
+                          <button class="bigButton" onclick="login()">Login</button>
+                          <br>
+                          <br>
+                          <a href="register.html">Kein Konto? Registrieren</a>
+                          <br>
+                          <br>
+          
+                      </div>
+          
+                    </div>
+              </li>
+            </ul>
+  
+  
+          </section>
+
+          <div class="background"></div>
+  
+        </div>
+      </div>
+  
+  
+  
+  
+  
+      <footer class="centerText">
+        <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
+        <script>
+          document.getElementById('copyright').innerHTML = "© Copyright " + new Date().getFullYear() + " by Sophie Krenböck";
+        </script>
+        <table class="socials">
+          <tr>
+            <td class="icons"><a href="https://www.instagram.com/sophieelena_/" class="fa fa-instagram iconsLink"></a></td>
+          </tr>
+        </table>
+      </footer>
+  
+  
+    </div>
+  
+  
+  </body>
+
+</html>
