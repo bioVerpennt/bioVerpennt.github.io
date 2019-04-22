@@ -1,92 +1,189 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://demo.postleaf.org/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Sophie Krenböck</title>
+  
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./styles/fonts.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./styles/styles.css">
 
-<head>
-  <meta charset="utf-8">
-  <title>Login</title>
-  <!-- Add Stylesheet -->
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <!-- Add icon library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Prettier alert library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="js/alert.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script src="js/firebaseInit.js"></script>
+  <script src="js/auth.js"></script>
+
+  <!-- Sidebar -->
+  <script src="./js/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="./js/sidebar.js"></script>
+
+  <script src="js/blog.js"></script>
+
+
 </head>
 
-<!-- Icon library -->
-<script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
 
-<!-- Prettier alert library -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<body class="template-blog page-homepage page-1">
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-<script src="js/firebaseInit.js"></script>
-<script src="js/auth.js"></script>
+  
+  
+<div class="nav" style="display: none;">
+  
+  <div class="nav-block nav-meta">
+    <h4 style="color: white">Sophie Krenböck</h4>
+  </div>
+
+  
+  <nav class="nav-block nav-menu">
+    
+    
+      
+      <a class="nav-menu- current" href="./">
+        Home
+      </a>
+    
+      
+      <a class="nav-menu- " href="https://www.instagram.com/sophieelena_/">
+        Instagram
+      </a>
+
+      <a class="nav-menu- " style="cursor: pointer" onclick="logout()">
+        Logout
+      </a>
+  
+    
+  </nav>
 
 
+  
+  <div class="nav-block nav-share clearfix">
+    <h3>Share</h3>
+    <a class="share-button share-button-twitter" id="twitter" href=''>Twitter</a>
+    <a class="share-button share-button-facebook" id="facebook" href="">Facebook</a>
+    <a class="share-button share-button-instagram" href="https://www.instagram.com">Instagram</a>
+    <a class="share-button share-button-email" id="email" href="">Email</a>
+    <script>
+      document.getElementById('twitter').href = 'https://twitter.com/intent/tweet?text=Sophie%20Krenböcks%20Blog:&url=' + window.location.href;
+      document.getElementById('facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href;
+      document.getElementById('email').href = 'mailto:?subject=Sophie%20Krenböcks%20Blog&body=Diese%20Webseite%20könnte%20dir%20gefallen%3A%20' + window.location.href;
+    </script>
+  </div>
 
-<html>
+  
+  <div class="nav-block nav-copyright">
+    <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
+    <script>
+      document.getElementById('copyright').innerHTML = "© " + new Date().getFullYear() + " by Sophie Krenböck";
+    </script>
+    <p class="nav-published-with">Alle Rechte Vorbehalten</p>
+  </div>
+</div>
 
-  <body>
 
-    <div class="flex-container background">
+  <main class="page-wrap">
+
+    
+    
+
   
-      <div id="wrapper">
-  
-        <div class="content">
-          <header>
-            <nav>
-            </nav>
-          </header>
-  
-  
-          <section>
-            <div class="card cardPadding centerText">
-  
-              <div class="cardContent">
-                  <ion-icon name="paper" style="font-size: 5em; color: #272b30"></ion-icon>
-  
-                  <h1 style="color: #272b30">Sophie's Blog</h1>
-                  <br>
-                  <br>
-                  <input type="text" placeholder="Email" id="email">
-                  <br>
-                  <input type="password" placeholder="Passwort" id="password">
-                  <br>
-                  <button class="bigButton" onclick="login()">Login</button>
-                  <br>
-                  <br>
-                  <a href="register.html">Kein Konto? Registrieren</a>
-                  <br>
-                  <br>
-  
-              </div>
-  
-            </div>
-  
-  
-          </section>
-  
-        </div>
+  <header class="cover cover-full has-cover" style="background-image: url('./assets/background.jpg');">
+    
+
+    
+    <button class="nav-toggle" type="button" role="button" aria-label="Toggle Navigation">
+      <div class="navicon"><span hidden="">Menu</span></div>
+    </button>
+
+    
+    <div class="cover-body">
+      <div class="cover-content body-wrap">
+        <h1 class="cover-title">Sophie Krenböck</h1>
+        Tequila isch lebe
       </div>
-  
-  
-  
-  
-  
-      <footer class="centerText">
-        <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
-        <script>
-          document.getElementById('copyright').innerHTML = "© Copyright " + new Date().getFullYear() + " by Sophie Krenböck";
-        </script>
-        <table class="socials">
-          <tr>
-            <td class="icons"><a href="https://www.instagram.com/sophieelena_/" class="fa fa-instagram iconsLink"></a></td>
-          </tr>
-        </table>
-      </footer>
-  
-  
     </div>
-  
-  
-  </body>
 
-</html>
+    
+    <button type="button" class="cover-continue">
+      <span hidden="">Continue</span>
+    </button>
+  </header>
+
+  
+  
+<div class="loop" id="posts">
+  
+
+</div>
+
+
+  
+  
+
+
+  <div class="pagination" id="loadMore">
+    <div class="pagination-body body-wrap">
+      <div class="pagination-previous">
+        
+        
+      </div>
+
+      <div class="pagination-current">
+        Die Aktuellsten 5 Artikel
+      </div>
+
+      <div class="pagination-next">
+        
+        
+          <a href="./index.html?loadAll=true" id="loadAll">Ältere Beiträge</a>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="pagination" id="allLoaded">
+    <div class="pagination-body body-wrap">
+      <div class="pagination-previous">
+        
+        
+      </div>
+
+      <div class="pagination-current">
+        Alle Artikel Werden Angezeigt
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    if(window.location.href.indexOf('?loadAll=true') > -1) {
+      document.getElementById('loadMore').style = 'display: none';
+    } else {
+      document.getElementById('allLoaded').style = 'display: none';
+    }
+  </script>
+
+
+
+
+
+
+  </main>
+
+
+
+  
+  
+
+
+
+
+
+
+
+</body></html>

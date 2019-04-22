@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="mac"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Registrieren</title>
+  <title>Login</title>
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
@@ -16,7 +16,7 @@
 
   <!-- Prettier alert library -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-  <script src="js/alert.js"></script>
+  <script src="./js/alert.js"></script>
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
@@ -41,24 +41,27 @@
 
       
       <div class="form-group">
-        <label for="password">Passwort</label>
+        <label for="password">Password</label>
         <div class="input-group">
           <input class="form-control" type="password" id="password">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Passwort Bestätigen</label>
-        <div class="input-group">
-          <input class="form-control" type="password" id="passwordAgain">
+          <span class="input-group-btn">
+            <a href="./forgotPassword.html" class="btn btn-secondary" title="Recover Password">
+              <i class="fa fa-life-buoy"></i>
+            </a>
+          </span>
         </div>
       </div>
 
       
       <div class="form-group">
-        <button onclick="register()" class="btn btn-block btn-primary">Registrieren</button>
+        <button onclick="login()" class="btn btn-block btn-primary">Login</button>
       </div>
     </div>
+
+
+    <p class="meta">
+      <a href="./register.html" class="text-muted">Registrieren</a>
+    </p>
 
   
   </main>

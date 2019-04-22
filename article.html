@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://demo.postleaf.org/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Article</title>
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./styles/fonts.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./styles/styles.css">
+
+
+  <!-- Prettier alert library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="js/alert.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script src="js/firebaseInit.js"></script>
+  <script src="js/auth.js"></script>
+
+  <!-- Sidebar -->
+  <script src="./js/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="./js/sidebar.js"></script>
+  <script src="./js/article.js"></script>
+
+
+</head>
+
+
+<body class="template-post">
+
+
+
+  <div class="nav" style="display: none;">
+  
+    <div class="nav-block nav-meta">
+      <h4 style="color: white">Sophie Krenböck</h4>
+    </div>
+  
+    
+    <nav class="nav-block nav-menu">
+      
+      
+        
+        <a class="nav-menu-" href="./index.html">
+          Home
+        </a>
+      
+        
+        <a class="nav-menu- " href="https://www.instagram.com/sophieelena_/">
+          Instagram
+        </a>
+  
+        <a class="nav-menu- " style="cursor: pointer" onclick="logout()">
+          Logout
+        </a>
+    
+      
+    </nav>
+  
+  
+    
+    <div class="nav-block nav-share clearfix">
+      <h3>Share</h3>
+      <a class="share-button share-button-twitter" id="twitter" href=''>Twitter</a>
+      <a class="share-button share-button-facebook" id="facebook" href="">Facebook</a>
+      <a class="share-button share-button-instagram" href="https://www.instagram.com">Instagram</a>
+      <a class="share-button share-button-email" id="email" href="">Email</a>
+      <script>
+        document.getElementById('twitter').href = 'https://twitter.com/intent/tweet?text=Sophie%20Krenböcks%20Blog:&url=' + window.location.href;
+        document.getElementById('facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href;
+        document.getElementById('email').href = 'mailto:?subject=Sophie%20Krenböcks%20Blog&body=Diese%20Webseite%20könnte%20dir%20gefallen%3A%20' + window.location.href;
+      </script>
+    </div>
+  
+    
+    <div class="nav-block nav-copyright">
+      <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
+      <script>
+        document.getElementById('copyright').innerHTML = "© " + new Date().getFullYear() + " by Sophie Krenböck";
+      </script>
+      <p class="nav-published-with">Alle Rechte Vorbehalten</p>
+    </div>
+  </div>
+
+
+  <main class="page-wrap">
+
+
+
+
+
+
+    <article>
+
+      <header id="headerImage" class="cover has-cover " style="">
+
+
+
+        <button class="nav-toggle" type="button" role="button" aria-label="Toggle Navigation">
+          <div class="navicon"><span hidden="">Menu</span></div>
+        </button>
+      </header>
+
+      <section class="post post-status-published post-sticky body-wrap">
+        <h1 class="post-title" id="postTitle"></h1>
+        <p class="post-meta" id="postMeta">
+        </p>
+        <div class="post-meta" id="editor" style="left: -15px; border: none"></div>
+
+
+      </section>
+
+
+      <!-- Include the Quill library -->
+      <script src="./assets/quill/quill.js"></script>
+      <link href="./assets/quill/quill.css" rel="stylesheet">
+    </article>
+
+
+
+
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div style="text-align: center">
+          <p id="copyright">© Copyright 2019 by Sophie Krenböck</p>
+          <script>
+            document.getElementById('copyright').innerHTML = "© " + new Date().getFullYear() + " by Sophie Krenböck";
+          </script>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+  </main>
+
+
+
+</body>
+
+</html>
